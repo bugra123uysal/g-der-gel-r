@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>giderler</title>
+  <style>
+    /* giderler bölümü  */
+    #gdir{
+      position: absolute ;
+      left: 10px;
+     
+    }
+    /* giderler katogerileri başlıkları */
+    h3{
+      background-color: burlywood;
+      color: black;
+    }
+    #glre{
+      position: relative;
+      float: right;
+    }
+    /* giderler */
+    #ğğ{
+      position: relative;
+      top: 70px;
+      left: 600px;
+    }
+    /* geliri gösterecek yer */
+    #gel{
+      position: relative;
+      top: 1px;
+      left: 600px;
+    
+
+    }
+    #sncc{
+      position:  absolute ;
+      top: 210px;
+      left: -550px;
+    }
+
+    #ıı{
+      position: relative;
+      left: 1px;
+      top: 1px;
+    }
+    /* hesaplama buttonu */
+    #füi{
+      box-shadow: 5px 5px 5px black;
+
+      left: 10px;
+      top: 10px;
+      position: fixed;
+    }
+    #işls{
+      position: absolute;
+      left: 600px;
+      top: 230px;
+
+    }
+
+    /* grafik  */
+    #donutchart{
+      position: absolute;
+      bottom: 10px;
+      left: 450px;
+    }
+
+    #don{
+      position: absolute;
+      bottom: 10px;
+      left: 950px;
+    }
+
+    #püüi{
+      position: absolute;
+      bottom: 10px;
+      left: 700px;
+    }
+
+    
+
+  
+  </style>
+</head>
+<body>
+   
+   <button onclick="mn()" id="füi" >hesaplaa</button>
+<!-- giderler -->
+<h1>giderlerim</h1>
+  <div id="gdir">
+    <h3>faturalar</h3>
+   <input id="a" value="0"    type="number" min="1" alt="internet" ><br>
+   <input id="b" value="0"    type="number" min="1" alt="su" ><br>
+   <input id="c" value="0"    type="number" min="1" alt="doğal gaz" ><br>
+   <input id="d" value="0"    type="number" min="1" alt="elektrik " ><br>
+   <input id="e" value="0"    type="number" min="1" alt="" ><br>
+
+   <h3>ev masrafları</h3>
+   <input id="f" value="0"   type="number" min="1" placeholder="kira " ><br>
+   <input id="g" value="0"   type="number" min="1" placeholder="aidat" ><br>
+   <input id="ğ" value="0"   type="number" min="1" placeholder="mutfak" ><br>
+   <input id="h" value="0"   type="number" min="1" placeholder="banyo" ><br>
+
+
+   <h3> seyehat</h3>
+   <input type="number" value="0"  id="ı" min="1" placeholder="barınma harcamlarım"><br>
+   <input type="number" value="0"  id="i" min="1" placeholder="seyehat masraflarım"><br>
+   <input type="number" value="0"  id="u" min="1" placeholder="yeme - içme masraflarım"><br>
+
+
+
+
+  </div>
+  <!-- gelirler -->
+  <div id="glre" >
+    <h3 id="ıı">gelir </h3>
+    <h2 id="sncc"></h2>
+   <input  id="maş" type="number" alt="maaş"><br>
+      
+  </div>
+  
+
+<div id="ggelir">
+  <!-- giderlerni yazıldığı yer -->
+  <p id="ğğ" ></p>
+
+ <p id="işls"></p>
+
+
+<!-- gelir yazan yer  -->
+  <p id="gel"></p> 
+  </div>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    var div = document.getElementById("gdir")
+
+    
+
+function mn(){
+
+ 
+
+  var maaş=  document.getElementById("maş").value;
+
+ var çç= parseFloat( document.getElementById("gel").innerHTML="gelir=" +" "+parseFloat( maaş)) 
+  var aa= 
+  parseFloat(  document.getElementById("a").value);
+
+  var bb=
+  parseFloat(document.getElementById("b").value);
+
+  var cc=
+  parseFloat(  document.getElementById("c").value);
+  
+  var dd = 
+  parseFloat( document.getElementById("d").value);
+
+  var ee= 
+  parseFloat( document.getElementById("e").value);
+
+  var ff = 
+  parseFloat(document.getElementById("f").value);
+
+  var gg = 
+  parseFloat( document.getElementById("g").value);
+
+  var ğğ = 
+  parseFloat( document.getElementById("ğ").value);
+
+  var hh = 
+ parseFloat( document.getElementById("h").value);
+
+ var ıı= 
+ parseFloat (document.getElementById("ı").value);
+
+ var ii=
+ parseFloat(document.getElementById("i").value);
+
+ var uu= 
+ parseFloat (document.getElementById("u").value);
+
+
+/* giderlerin toplami */
+ var  smtpl= parseFloat( document.getElementById("ğğ").innerHTML="giderler=" + " "+parseFloat( aa+bb+cc+dd+ee+ff+gg+ğğ+hh+ıı+ii+uu ));
+
+
+  var bnb= document.getElementById("işls").innerHTML=parseFloat( smtpl - maaş);
+
+  /* giderlerin sonucu */
+
+ var tbll=document.getElementById("tbll");
+
+ /* yüzdelik dilimler */
+
+ google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['internet',     aa],
+          ['su',      bb],
+          ['doğal gaz',  cc],
+          ['elektrik', dd],
+       
+        ]);
+
+        var options = {
+          title: 'Faturallar',
+          pieHole: 0.4,
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+        chart.draw(data, options);
+
+      
+        /* aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa */
+
+        google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['kira',     ff],
+          ['aidat',      gg],
+          ['mutfak',  ğğ],
+          ['banyo', hh],
+       
+       
+        ]);
+
+        var options = {
+          title: 'ev masraflar',
+          pieHole: 0.4,
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('don'));
+        chart.draw(data, options);
+
+      
+
+
+        /* ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+      
+  
+
+
+
+
+
+     
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['barınma',     ıı],
+          ['seyahet',      ii],
+          ['yeme',  uu],
+        
+        ]);
+
+        var options = {
+          title: 'seyehat',
+          pieHole: 0.4,
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('püüi'));
+
+        chart.draw(data, options);
+      }
+
+
+
+
+
+
+
+      }
+
+
+    }
+    
+  }
+      
+
+      
+      
+
+
+
+
+var şl=document.getElementById("ışls").value;
+
+
+  </script>
+  
+  <div id="donutchart" style="width: 300px; height: 250px;"></div>
+
+  <div id="don" style="width: 300px; height: 250px;"></div>
+  <div id="püüi" style="width: 300px; height: 250px;"></div>
+
+</body>
+</html>
